@@ -4,10 +4,7 @@ import os
 import django_heroku
 import dj_database_url
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-]
+CORS_ALLOWED_ORIGINS = [str('FRONTEND_URL')]
 
 MEDIA_URL = '/media-url/'
 
@@ -17,7 +14,7 @@ SECRET_KEY = str(os.environ.get('SECRET_KEY'))
 
 ADMIN_URL = str(os.environ.get('ADMIN_URL'))
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.herokuapp.com']
 
