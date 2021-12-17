@@ -14,7 +14,7 @@ SECRET_KEY = str(os.environ.get('SECRET_KEY'))
 
 ADMIN_URL = str(os.environ.get('ADMIN_URL'))
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.herokuapp.com']
 
