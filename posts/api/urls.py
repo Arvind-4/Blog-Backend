@@ -11,11 +11,11 @@ urlpatterns = [
 
     # Posts
 
-    path('list-view/', PostListAPIView.as_view()),
-    path('<str:slug>/detail-view/', SinglePostAPIView.as_view()),
+    path('list-view/', PostListAPIView.as_view(), name='list_view'),
+    path('<str:slug>/detail-view/', SinglePostAPIView.as_view(), name='detail_view'),
 
     # Tags
 
-    path('tags/lists/', TagListView.as_view()),
-    path('tags/<str:slug>/', TagAPIView.as_view()),
+    path('tags/lists/', TagListView.as_view(), name='tags_list'),
+    path('tags/<str:slug>/', TagAPIView.as_view(), name='tags_filter'),
 ]
