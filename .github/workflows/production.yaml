@@ -45,6 +45,5 @@ jobs:
           DB_ENGINE: ${{secrets.DB_ENGINE}}
 
         run: |
-          python manage.py makemigrations
-          python manage.py migrate
-          python manage.py test --settings=blog.devlopement
+          export DJANGO_SETTINGS_MODULE=blog.devlopement
+          python manage.py test
