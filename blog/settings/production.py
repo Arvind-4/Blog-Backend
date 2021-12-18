@@ -6,7 +6,7 @@ import dj_database_url
 
 # CORS_ALLOWED_ORIGINS = [str('FRONTEND_URL')]
 
-MEDIA_URL = '/media-url/'
+MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
