@@ -35,9 +35,7 @@ jobs:
         env:
           DATABASE_URL: "postgres://postgres:postgres@localhost:5432/postgres"
         run: |
-          sudo -u postgres createuser postgres
           createdb -h localhost -p 5432 -U postgres postgres
-          sudo pg_ctlcluster 11 main start
           python manage.py test
 
         # continue-on-error: true
