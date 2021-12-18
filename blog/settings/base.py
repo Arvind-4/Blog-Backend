@@ -16,6 +16,8 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
+TESTING = len(sys.argv) > 1 and sys.argv[1] == 'test'
+
 # Application definition
 
 INSTALLED_APPS = [
