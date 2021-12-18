@@ -21,7 +21,7 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Set up Python 3.7
+      - name: Set up Python 3.9
         uses: actions/setup-python@v1
         with:
           python-version: 3.9
@@ -37,7 +37,7 @@ jobs:
         run: |
           sudo -u postgres createuser postgres
           createdb -h localhost -p 5432 -U postgres postgres
-          pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+          sudo pg_ctlcluster 11 main start
           python manage.py test
 
         # continue-on-error: true
