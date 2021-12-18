@@ -37,6 +37,7 @@ jobs:
         run: |
           sudo -u postgres createuser postgres
           createdb -h localhost -p 5432 -U postgres postgres
+          pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
           python manage.py test
 
         # continue-on-error: true
