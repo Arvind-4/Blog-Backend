@@ -27,4 +27,5 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = True
 
-django_heroku.settings(locals())
+if 'HEROKU' in os.environ:
+    django_heroku.settings(locals())
