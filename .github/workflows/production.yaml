@@ -43,6 +43,7 @@ jobs:
           DB_HOST: ${{ secrets.DB_HOST }}
           DB_PORT: ${{ secrets.DB_PORT }}
           DB_ENGINE: ${{secrets.DB_ENGINE}}
+          DJANGO_LIVE: False
 
         run: |
           python manage.py test
