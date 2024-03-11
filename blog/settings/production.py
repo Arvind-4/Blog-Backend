@@ -1,35 +1,31 @@
-from .base import *
+from blog.env import config
+from blog.settings.base import *
 
-import os
-import django_heroku
-import dj_database_url
+MEDIA_URL = "/media/"
 
-# CORS_ALLOWED_ORIGINS = [str('FRONTEND_URL')]
+STATIC_ROOT = BASE_DIR / "static-cdn-local"
+MEDIA_ROOT = BASE_DIR / "media-cdn-local"
 
-STATIC_ROOT = BASE_DIR / 'static'
+DEBUG = config("DJANGO_DEBUG", cast=bool)
+SECRET_KEY = config("DJANGO_SECRET_KEY", cast=str)
+ADMIN_URL = config("DJANGO_ADMIN_URL", cast=str)
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_URL = '/media/'
+CORS_ALLOWED_ORIGINS = []
+CORS_ALLOWED_ORIGINS.extend(
+    config(
+        "DJANGO_CORS_ALLOWED_ORIGINS", cast=lambda v: [s.strip() for s in v.split(",")]
+    )
+)
 
-MEDIA_ROOT = BASE_DIR / 'media'
 
-SECRET_KEY = str(os.environ.get('SECRET_KEY'))
+ALLOWED_HOSTS = []
+ALLOWED_HOSTS.extend(
+    config("DJANGO_ALLOWED_HOSTS", cast=lambda v: [s.strip() for s in v.split(",")])
+)
 
-ADMIN_URL = str(os.environ.get('ADMIN_URL'))
+from blog.db import *  # noqa
 
-DEBUG = False
-
-ALLOWED_HOSTS = ['.herokuapp.com']
-
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-DATABASES['default']['ATOMIC_REQUESTS'] = True
-
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
-
-if 'HEROKU' in os.environ:
-    django_heroku.settings(locals())
+DJANGO_LIVE = config("DJANGO_LIVE", cast=bool)
+if DJANGO_LIVE:
+    from blog.https import *  # noqa

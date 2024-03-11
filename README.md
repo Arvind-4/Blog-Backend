@@ -1,4 +1,3 @@
-
 # Blog Backend
 
 Simple Content Management System build on Django and Django Rest Framework. 
@@ -7,14 +6,14 @@ Simple Content Management System build on Django and Django Rest Framework.
 
 - Clone Repo
 
-```
+```bash
 mkdir blog_backend
 cd blog_backend
 git clone https://github.com/Arvind-4/Blog-Backend.git .
 ```
 - Install Virtual Environment and Dependencies
 
-```
+```bash
 pip install virtualenv
 python -m venv .
 source Scripts/activate
@@ -22,14 +21,14 @@ pip install -r requirements.txt
 ```
 
 
-> **_NOTE:_**     To Install Dev Dependencies run command <br/>
+<!-- > **_NOTE:_**     To Install Dev Dependencies run command <br/>
 > ``
 > pip install -r dev.requirements.txt
-> ``
+> `` -->
 
 
 - Run Local Server 
 
-```
+```bash
 python manage.py runserver
 ```
