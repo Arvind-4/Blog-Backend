@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "blog"
+version = "0.1.0"
+description = "A Simple Content Management System build on Django and Django Rest Framework."
+authors = ["Arvind <pingarvindforquestions@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = ">=3.2,<3.3"
+whitenoise = "^6.6.0"
+django-cors-headers = "^4.3.1"
+pillow = "^10.2.0"
+python-decouple = "^3.8"
+drf-spectacular = "^0.27.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
